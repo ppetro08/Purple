@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Purple</string>
+    <string name="action_settings">Settings</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_in">In</string>
+    <string name="button_higher">Higher</string>
+    <string name="button_lower">Lower</string>
+    <string name="button_red">Red</string>
+    <string name="button_black">Black</string>
+    <string name="button_out">Out</string>
+    <string name="button_diamonds">Diamonds</string>
+    <string name="button_hearts">Hearts</string>
+    <string name="button_spades">Spades</string>
+    <string name="button_clubs">Clubs</string>
+    <string name="button_purple">Purple</string>
+</resources>

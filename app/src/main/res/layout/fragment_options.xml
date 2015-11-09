@@ -1,0 +1,123 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:clickable="true"
+              android:orientation="vertical"
+              android:weightSum="6"
+              tools:context="com.twotonestallion.purple.options">
+
+    <LinearLayout
+        android:id="@+id/purpleLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnPurple"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/button_purple"
+            android:backgroundTint="#666699"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/verticalLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:baselineAligned="false">
+
+            <LinearLayout
+                android:id="@+id/leftLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:weightSum="5">
+
+                <Button
+                    android:id="@+id/btnRed"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/button_red"/>
+
+                <Button
+                    android:id="@+id/btnDiamonds"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/button_diamonds"/>
+
+                <Button
+                    android:id="@+id/btnClubs"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/button_clubs"/>
+
+                <Button
+                    android:id="@+id/btnHigher"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/button_higher"/>
+
+                <Button
+                    android:id="@+id/btnIn"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/button_in"/>
+            </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/rightLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:weightSum="5">
+
+            <Button
+                android:id="@+id/btnBlack"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/button_black"/>
+
+            <Button
+                android:id="@+id/btnHearts"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/button_hearts"/>
+
+            <Button
+                android:id="@+id/btnSpades"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/button_spades"
+                android:allowUndo="false"/>
+
+            <Button
+                android:id="@+id/btnLower"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/button_lower"/>
+
+            <Button
+                android:id="@+id/btnOut"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="@string/button_out"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
