@@ -1,7 +1,7 @@
 package com.twotonestallion.purple;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,7 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements FragmentOptions.OnOptionClickListener, FragmentGame.GameClickListener
 {
@@ -32,9 +34,6 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
                 return;
             }
 
-            // Add the fragment to the 'fragment_container' FrameLayout
-            //getSupportFragmentManager().beginTransaction()
-            //        .add(R.id.fragment_container, new FragmentGame()).commit();
             changeFragment(new FragmentGame(), null);
         }
 
@@ -58,8 +57,9 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.rules) {
+            Intent intent = new Intent(this, Rules.class);
+            startActivity(intent);
             return true;
         }
 
@@ -75,33 +75,34 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
         } else {
             changeFragment(new FragmentGame(), null);
 
-//            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-//            String alertMessage = String.valueOf(purple.cardCount);
-//            if (purple.cardCount > 1) {
-//                alertMessage = alertMessage + " Drinks";
-//            }
-//            else {
-//                alertMessage = alertMessage + " Drink";
-//            }
-//            alertDialog.setMessage(alertMessage);
-//            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-//                    new DialogInterface.OnClickListener()
-//                    {
-//                        public void onClick(DialogInterface dialog, int which)
-//                        {
-//                            dialog.dismiss();
-//                        }
-//                    });
-//            alertDialog.show();
-            purple.discardCards();
+            final LinearLayout wrongCardOverlay = (LinearLayout) findViewById(R.id.wrongCardOverlay);
 
-//            View view = findViewById(android.R.id.content);
-//            ViewOverlay viewOverlay = view.getOverlay();
-//            Drawable drawable = new ColorDrawable(Color.parseColor("#ff0000"));
-//            drawable.setAlpha(255);
-//
-//            viewOverlay.add(drawable);
-//            view.setBackgroundColor(Color.parseColor("#ff0000"));
+            String uri = "@drawable/" + purple.getCurrentCard().getCardName();
+            int imageResourceID = getResources().getIdentifier(uri, null, getPackageName());
+            Drawable drawable = getResources().getDrawable(imageResourceID);
+
+            ((ImageView) findViewById(R.id.imgWrongCard)).setImageDrawable(drawable);
+
+            String drinks = "Wrong: 1 Drink";
+            int numOfDrinks = purple.cardCount;
+            if (numOfDrinks > 1) {
+                drinks = drinks.replace("1", String.valueOf(numOfDrinks));
+                drinks += "s";
+            }
+            ((TextView) findViewById(R.id.lblDrinkCount)).setText(drinks);
+
+            wrongCardOverlay.setVisibility(View.VISIBLE);
+
+            wrongCardOverlay.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    wrongCardOverlay.setVisibility(View.GONE);
+                }
+            });
+
+            purple.discardCards();
         }
     }
 
@@ -118,10 +119,7 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
             if (previousCard != null)
                 previousCardName = previousCard.getCardName();
 
-            //clearFragmentStack();
-
             changeFragment(new FragmentGame(), null);
-            getSupportFragmentManager().executePendingTransactions();
             frag = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
             ((FragmentGame) frag).UpdateCards(currentCardName, previousCardName, purple.cardCount);
         }
@@ -151,11 +149,11 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
 
         switch (guess.toUpperCase()) {
             case "RED":
-                if (newCard.getColor() == "red")
+                if (newCard.getColor().equals("red"))
                     return true;
                 break;
             case "BLACK":
-                if (newCard.getColor() == "black")
+                if (newCard.getColor().equals("black"))
                     return true;
                 break;
             case "HIGHER":
@@ -189,27 +187,27 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
                     return true;
                 break;
             case "DIAMONDS":
-                if (newCard.getSuit() == Suit.DIAMONDS)
+                if (newCard.getSuit().equals(Suit.DIAMONDS))
                     return true;
                 break;
             case "HEARTS":
-                if (newCard.getSuit() == Suit.HEARTS)
+                if (newCard.getSuit().equals(Suit.HEARTS))
                     return true;
                 break;
             case "SPADES":
-                if (newCard.getSuit() == Suit.SPADES)
+                if (newCard.getSuit().equals(Suit.SPADES))
                     return true;
                 break;
             case "CLUBS":
-                if (newCard.getSuit() == Suit.CLUBS)
+                if (newCard.getSuit().equals(Suit.CLUBS))
                     return true;
                 break;
             case "PURPLE":
                 purple.flipCard();
                 currentCard = newCard;
                 newCard = purple.getCurrentCard();
-                if (currentCard.getColor() == "red" && newCard.getColor() == "black"
-                        || currentCard.getColor() == "black" && newCard.getColor() == "red")
+                if (currentCard.getColor().equals("red") && newCard.getColor().equals("black")
+                        || currentCard.getColor().equals("black") && newCard.getColor().equals("red"))
                     return true;
                 break;
         }
@@ -231,6 +229,8 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
                 .replace(R.id.fragment_container, fragment)
                 .addToBackStack(null)
                 .commit();
+
+        getSupportFragmentManager().executePendingTransactions();
     }
 
     @Override

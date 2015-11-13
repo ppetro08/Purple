@@ -5,7 +5,8 @@
               android:clickable="true"
               android:orientation="vertical"
               android:weightSum="6"
-              tools:context="com.twotonestallion.purple.options">
+              tools:context="com.twotonestallion.purple.options"
+              android:padding="16dp">
 
     <LinearLayout
         android:id="@+id/purpleLinearLayout"
@@ -44,21 +45,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="@string/button_red"/>
+                    android:text="@string/button_red"
+                    android:backgroundTint="#D00000"/>
 
                 <Button
                     android:id="@+id/btnDiamonds"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="@string/button_diamonds"/>
+                    android:text="@string/button_diamonds"
+                    android:backgroundTint="#D00000"/>
 
                 <Button
-                    android:id="@+id/btnClubs"
+                    android:id="@+id/btnHearts"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="@string/button_clubs"/>
+                    android:text="@string/button_hearts"
+                    android:backgroundTint="#D00000"/>
 
                 <Button
                     android:id="@+id/btnHigher"
@@ -88,14 +92,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="@string/button_black"/>
+                android:text="@string/button_black"
+                android:backgroundTint="#202020"
+                android:allowUndo="false"/>
 
             <Button
-                android:id="@+id/btnHearts"
+                android:id="@+id/btnClubs"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="@string/button_hearts"/>
+                android:text="@string/button_clubs"
+                android:backgroundTint="#202020"/>
 
             <Button
                 android:id="@+id/btnSpades"
@@ -103,7 +110,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="@string/button_spades"
-                android:allowUndo="false"/>
+                android:allowUndo="false"
+                android:backgroundTint="#202020"/>
 
             <Button
                 android:id="@+id/btnLower"

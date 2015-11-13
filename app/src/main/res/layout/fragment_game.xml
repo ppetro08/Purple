@@ -1,23 +1,60 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.twotonestallion.purple.game">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.twotonestallion.purple.game">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:id="@+id/lblCount"
-        android:textSize="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
-
-    <ImageView
+    <LinearLayout
+        android:id="@+id/gameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/imgCards"
-        android:layout_below="@+id/lblCount"
-        android:layout_centerInParent="true"/>
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/lblCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="40dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <ImageView
+            android:id="@+id/imgCards"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/lblCount"
+            android:layout_centerInParent="true"
+            android:contentDescription="Playing Cards"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/wrongCardOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#CCFF0000"
+        android:clickable="true"
+        android:visibility="gone"
+        android:fillViewport="true">
+
+        <TextView
+            android:id="@+id/lblDrinkCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="40dp"
+            android:layout_gravity="center_horizontal"/>
+
+        <ImageView
+            android:id="@+id/imgWrongCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/lblCount"
+            android:layout_centerInParent="true"
+            android:contentDescription="Playing Cards"
+            android:paddingBottom="16dp"
+            android:paddingTop="16dp"/>
+    </LinearLayout>
 </RelativeLayout>
 
