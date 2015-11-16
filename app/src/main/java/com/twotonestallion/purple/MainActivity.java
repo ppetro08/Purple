@@ -2,6 +2,7 @@ package com.twotonestallion.purple;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
     @Override
     public void onGuess(String guess)
     {
+        guess = guess.toUpperCase();
         Boolean isCorrectAnswer = isCorrectAnswer(guess);
         if (isCorrectAnswer) {
             updateGameFragment();
@@ -77,11 +79,19 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
 
             final LinearLayout wrongCardOverlay = (LinearLayout) findViewById(R.id.wrongCardOverlay);
 
-            String uri = "@drawable/" + purple.getCurrentCard().getCardName();
-            int imageResourceID = getResources().getIdentifier(uri, null, getPackageName());
-            Drawable drawable = getResources().getDrawable(imageResourceID);
+            Drawable currentCardDrawable = getDrawableCard(purple.getCurrentCard().getCardName());
 
-            ((ImageView) findViewById(R.id.imgWrongCard)).setImageDrawable(drawable);
+            if (guess.equals("PURPLE")) {
+                Drawable[] layers = new Drawable[2];
+                layers[1] = currentCardDrawable;
+                layers[0] = getDrawableCard(purple.getPreviousCard().getCardName());
+                LayerDrawable layerDrawable = new LayerDrawable(layers);
+                layerDrawable.setLayerInset(1, 250, 250, 0, 0);
+                layerDrawable.setLayerInset(0, 0, 0, 250, 250);
+                ((ImageView) findViewById(R.id.imgWrongCard)).setImageDrawable(layerDrawable);
+            } else {
+                ((ImageView) findViewById(R.id.imgWrongCard)).setImageDrawable(currentCardDrawable);
+            }
 
             String drinks = "Wrong: 1 Drink";
             int numOfDrinks = purple.cardCount;
@@ -104,6 +114,13 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
 
             purple.discardCards();
         }
+    }
+
+    public Drawable getDrawableCard(String cardName)
+    {
+        String uri = "@drawable/" + cardName;
+        int imageResourceID = getResources().getIdentifier(uri, null, getPackageName());
+        return getResources().getDrawable(imageResourceID);
     }
 
     // Handles the changing the cards on the Game Fragment
@@ -147,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
         int higherCard = 0;
         int lowerCard = 0;
 
-        switch (guess.toUpperCase()) {
+        switch (guess) {
             case "RED":
                 if (newCard.getColor().equals("red"))
                     return true;
