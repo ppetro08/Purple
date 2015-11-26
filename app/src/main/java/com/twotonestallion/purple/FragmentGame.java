@@ -80,9 +80,8 @@ public class FragmentGame extends Fragment implements View.OnClickListener
 
         if (CurrentCard != null) {
             UpdateCards(CurrentCard, PreviousCard, CardCount);
-        }
-        else {
-            ((ImageView)view.findViewById(R.id.imgCards)).setImageDrawable(getDrawableCard("back_of_card"));
+        } else {
+            ((ImageView) view.findViewById(R.id.imgCards)).setImageDrawable(getDrawableCard("back_of_card"));
         }
 
         ((TextView) view.findViewById(R.id.lblCount)).setText(String.valueOf(CardCount));

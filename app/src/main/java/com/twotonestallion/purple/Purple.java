@@ -49,12 +49,16 @@ public class Purple
 
     public void populateDeck()
     {
-        // TODO make this list smaller and test end game functionality
         for (Rank rank : Rank.values()) {
-            for (Suit suit : Suit.values()) {
-                cards.add(new PlayingCards(suit, rank));
-            }
+            cards.add(new PlayingCards(Suit.DIAMONDS, rank));
         }
+
+        // TODO make this list smaller and test end game functionality
+//        for (Rank rank : Rank.values()) {
+//            for (Suit suit : Suit.values()) {
+//                cards.add(new PlayingCards(suit, rank));
+//            }
+//        }
     }
 
     private <T> void Shuffle(ArrayList<T> list)
