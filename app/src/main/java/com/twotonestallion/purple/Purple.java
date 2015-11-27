@@ -11,7 +11,6 @@ public class Purple
 
     void initializeDeck()
     {
-        // Don't reset count, then add previous cards to new card shuffle
         if (cards == null)
             cards = new ArrayList<>();
 
@@ -55,15 +54,15 @@ public class Purple
 
     public ArrayList<PlayingCards> populateDeck()
     {
-        for (Rank rank : Rank.values()) {
-            cards.add(new PlayingCards(Suit.DIAMONDS, rank));
-        }
-
 //        for (Rank rank : Rank.values()) {
-//            for (Suit suit : Suit.values()) {
-//                cards.add(new PlayingCards(suit, rank));
-//            }
+//            cards.add(new PlayingCards(Suit.DIAMONDS, rank));
 //        }
+
+        for (Rank rank : Rank.values()) {
+            for (Suit suit : Suit.values()) {
+                cards.add(new PlayingCards(suit, rank));
+            }
+        }
         return cards;
     }
 
