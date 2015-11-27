@@ -79,20 +79,6 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
 
             final LinearLayout wrongCardOverlay = (LinearLayout) findViewById(R.id.wrongCardOverlay);
 
-            Drawable currentCardDrawable = getDrawableCard(purple.getCurrentCard().getCardName());
-
-            if (guess.equals("PURPLE")) {
-                Drawable[] layers = new Drawable[2];
-                layers[1] = currentCardDrawable;
-                layers[0] = getDrawableCard(purple.getPreviousCard().getCardName());
-                LayerDrawable layerDrawable = new LayerDrawable(layers);
-                layerDrawable.setLayerInset(1, 250, 250, 0, 0);
-                layerDrawable.setLayerInset(0, 0, 0, 250, 250);
-                ((ImageView) findViewById(R.id.imgWrongCard)).setImageDrawable(layerDrawable);
-            } else {
-                ((ImageView) findViewById(R.id.imgWrongCard)).setImageDrawable(currentCardDrawable);
-            }
-
             String drinks = "Wrong: 1 Drink";
             int numOfDrinks = purple.cardCount;
             if (numOfDrinks > 1) {
@@ -102,7 +88,6 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
             ((TextView) findViewById(R.id.lblDrinkCount)).setText(drinks);
 
             wrongCardOverlay.setVisibility(View.VISIBLE);
-
             wrongCardOverlay.setOnClickListener(new View.OnClickListener()
             {
                 @Override

@@ -6,15 +6,19 @@ import java.util.Random;
 public class Purple
 {
     public int cardCount;
-    public ArrayList<PlayingCards> cards;
+    private ArrayList<PlayingCards> cards;
     private Random rng = new Random();
 
     void initializeDeck()
     {
-        cardCount = 0;
-        cards = new ArrayList<>();
-        populateDeck();
-        Shuffle(cards);
+        // Don't reset count, then add previous cards to new card shuffle
+        if (cards == null)
+            cards = new ArrayList<>();
+
+        ArrayList<PlayingCards> newCards;
+        newCards = populateDeck();
+        newCards = Shuffle(newCards);
+        cards.addAll(newCards);
     }
 
     public PlayingCards getCurrentCard()
@@ -35,6 +39,8 @@ public class Purple
         cardCount++;
         if (cardCount > cards.size()) {
             initializeDeck();
+            // TODO: Show ad
+            cardCount++;
         }
     }
 
@@ -47,21 +53,21 @@ public class Purple
         cardCount = 0;
     }
 
-    public void populateDeck()
+    public ArrayList<PlayingCards> populateDeck()
     {
         for (Rank rank : Rank.values()) {
             cards.add(new PlayingCards(Suit.DIAMONDS, rank));
         }
 
-        // TODO make this list smaller and test end game functionality
 //        for (Rank rank : Rank.values()) {
 //            for (Suit suit : Suit.values()) {
 //                cards.add(new PlayingCards(suit, rank));
 //            }
 //        }
+        return cards;
     }
 
-    private <T> void Shuffle(ArrayList<T> list)
+    private <T> ArrayList<T> Shuffle(ArrayList<T> list)
     {
         int n = list.size();
         while (n > 1) {
@@ -71,5 +77,6 @@ public class Purple
             list.set(k, list.get(n));
             list.set(n, value);
         }
+        return list;
     }
 }

@@ -65,18 +65,20 @@
                     android:backgroundTint="#D00000"/>
 
                 <Button
-                    android:id="@+id/btnHigher"
+                    android:id="@+id/btnLower"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="@string/button_higher"/>
+                    android:text="@string/button_lower"
+                    android:backgroundTint="#D00000"/>
 
                 <Button
                     android:id="@+id/btnIn"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="@string/button_in"/>
+                    android:text="@string/button_in"
+                    android:backgroundTint="#D00000"/>
             </LinearLayout>
 
         <LinearLayout
@@ -114,18 +116,20 @@
                 android:backgroundTint="#202020"/>
 
             <Button
-                android:id="@+id/btnLower"
+                android:id="@+id/btnHigher"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="@string/button_lower"/>
+                android:text="@string/button_higher"
+                android:backgroundTint="#202020"/>
 
             <Button
                 android:id="@+id/btnOut"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="@string/button_out"/>
+                android:text="@string/button_out"
+                android:backgroundTint="#202020"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
