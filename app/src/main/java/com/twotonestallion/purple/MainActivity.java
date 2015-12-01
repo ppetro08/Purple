@@ -251,12 +251,16 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
     }
 
 
-    // Disables backbutton functionality
+    // Changes back button functionality based on the current fragment
     @Override
     public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount() != 0)
+
+        Fragment frag = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+
+        if (frag instanceof FragmentOptions) {
             super.onBackPressed();
-        else {
+        }
+        else if (frag instanceof FragmentGame) {
             new AlertDialog.Builder(this)
                     .setMessage("Are you sure you want to exit?")
                     .setCancelable(false)
