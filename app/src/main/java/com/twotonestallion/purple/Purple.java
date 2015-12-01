@@ -54,10 +54,6 @@ public class Purple
 
     public ArrayList<PlayingCards> populateDeck()
     {
-//        for (Rank rank : Rank.values()) {
-//            cards.add(new PlayingCards(Suit.DIAMONDS, rank));
-//        }
-
         for (Rank rank : Rank.values()) {
             for (Suit suit : Suit.values()) {
                 cards.add(new PlayingCards(suit, rank));

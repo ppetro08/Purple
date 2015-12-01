@@ -1,11 +1,13 @@
 package com.twotonestallion.purple;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -167,6 +169,8 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
                     return true;
                 break;
             case "IN":
+                if (previousCard.getRank() == currentCard.getRank())
+                    return false;
                 if (previousCard.getRank() < currentCard.getRank()) {
                     higherCard = currentCard.getRank();
                     lowerCard = previousCard.getRank();
@@ -178,6 +182,8 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
                     return true;
                 break;
             case "OUT":
+                if (previousCard.getRank() == currentCard.getRank())
+                    return false;
                 if (previousCard.getRank() < currentCard.getRank()) {
                     higherCard = currentCard.getRank();
                     lowerCard = previousCard.getRank();
@@ -242,5 +248,25 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
         bundle.putInt("CardCount", purple.cardCount);
 
         changeFragment(new FragmentOptions(), bundle);
+    }
+
+
+    // Disables backbutton functionality
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() != 0)
+            super.onBackPressed();
+        else {
+            new AlertDialog.Builder(this)
+                    .setMessage("Are you sure you want to exit?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            finish();
+                        }
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
+        }
     }
 }
