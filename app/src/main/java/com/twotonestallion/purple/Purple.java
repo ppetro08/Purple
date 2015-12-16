@@ -1,5 +1,10 @@
 package com.twotonestallion.purple;
 
+import android.app.Activity;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -38,7 +43,8 @@ public class Purple
         cardCount++;
         if (cardCount > cards.size()) {
             initializeDeck();
-            // TODO: Show ad
+            MainActivity mainActivity = new MainActivity();
+            mainActivity.createInterstitialAd(); // Creates full screen ad
             cardCount++;
         }
     }
@@ -56,7 +62,7 @@ public class Purple
     {
         for (Rank rank : Rank.values()) {
             for (Suit suit : Suit.values()) {
-                cards.add(new PlayingCards(suit, rank));
+                cards.add(new PlayingCards(suit,Rank.TWO));
             }
         }
         return cards;

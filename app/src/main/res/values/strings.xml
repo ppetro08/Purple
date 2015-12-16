@@ -2,7 +2,6 @@
     <string name="app_name">Purple</string>
     <string name="action_settings">Settings</string>
 
-<!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="button_in">In</string>
     <string name="button_higher">Higher</string>
@@ -27,4 +26,8 @@
     <string name="action_example">Example action</string>
     <string name="rules">Rules</string>
     <string name="title_activity_rules">Rules</string>
+
+    <!-- Ad Unit IDs -->
+    <string name="banner_ad_unit_id">ca-app-pub-8709821789139337/2962957002</string>
+    <string name="interstitial_ad_unit_id">ca-app-pub-8709821789139337/4439690200</string>
 </resources>

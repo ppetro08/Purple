@@ -1,9 +1,8 @@
 package com.twotonestallion.purple;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,19 +11,48 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 
 public class MainActivity extends AppCompatActivity implements FragmentOptions.OnOptionClickListener, FragmentGame.GameClickListener
 {
     public Purple purple;
+    private static Context context;
+
+    public void createInterstitialAd()
+    {
+        // Creates full screen ad
+        AdManager adManager = new AdManager(context);
+        final InterstitialAd ad = adManager.getAd();
+        ad.setAdListener(new AdListener()
+        {
+            @Override
+            public void onAdLoaded()
+            {
+                ad.show();
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        context = getApplicationContext();
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest request = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)        // All emulators
+                .addTestDevice("AC98C820A50B4AD8A2106EDE96FB87D4")  // An example device ID
+                .build();
+        mAdView.loadAd(request);
 
         // Check that the activity is using the layout version with
         // the fragment_container FrameLayout
@@ -101,13 +129,6 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
 
             purple.discardCards();
         }
-    }
-
-    public Drawable getDrawableCard(String cardName)
-    {
-        String uri = "@drawable/" + cardName;
-        int imageResourceID = getResources().getIdentifier(uri, null, getPackageName());
-        return getResources().getDrawable(imageResourceID);
     }
 
     // Handles the changing the cards on the Game Fragment
@@ -250,22 +271,23 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
         changeFragment(new FragmentOptions(), bundle);
     }
 
-
     // Changes back button functionality based on the current fragment
     @Override
-    public void onBackPressed() {
+    public void onBackPressed()
+    {
 
         Fragment frag = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
 
         if (frag instanceof FragmentOptions) {
             super.onBackPressed();
-        }
-        else if (frag instanceof FragmentGame) {
+        } else if (frag instanceof FragmentGame) {
             new AlertDialog.Builder(this)
                     .setMessage("Are you sure you want to exit?")
                     .setCancelable(false)
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                    {
+                        public void onClick(DialogInterface dialog, int id)
+                        {
                             finish();
                         }
                     })
