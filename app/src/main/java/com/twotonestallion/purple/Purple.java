@@ -38,8 +38,6 @@ public class Purple
         cardCount++;
         if (cardCount > cards.size()) {
             initializeDeck();
-            MainActivity mainActivity = new MainActivity();
-            mainActivity.createInterstitialAd(); // Creates full screen ad
             cardCount++;
         }
     }
