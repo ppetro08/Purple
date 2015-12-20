@@ -1,4 +1,4 @@
-package com.twotonestallion.purple;
+package com.twotonestallion.purple_paid;
 
 public enum Suit
 {

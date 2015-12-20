@@ -1,4 +1,4 @@
-package com.twotonestallion.purple;
+package com.twotonestallion.purple_paid;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

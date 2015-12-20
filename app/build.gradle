@@ -12,7 +12,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
     defaultConfig {
-        applicationId "com.twotonestallion.purple"
+        applicationId "com.twotonestallion.purple_paid"
         minSdkVersion 19
         targetSdkVersion 23
         versionCode 1
