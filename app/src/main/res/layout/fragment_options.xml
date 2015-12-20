@@ -13,14 +13,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="5"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="5dp">
 
         <Button
             android:id="@+id/btnPurple"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/button_purple"
-            android:backgroundTint="#7D26CD"/>
+            android:background="@color/colorPrimary"/>
     </LinearLayout>
 
     <LinearLayout
@@ -30,7 +31,8 @@
         android:layout_weight="1"
         android:orientation="horizontal"
         android:weightSum="2"
-        android:baselineAligned="false">
+        android:baselineAligned="false"
+        android:layout_marginTop="5dp">
 
             <LinearLayout
                 android:id="@+id/leftLinearLayout"
@@ -38,7 +40,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:weightSum="5">
+                android:weightSum="5"
+                android:layout_marginRight="5dp"
+                >
 
                 <Button
                     android:id="@+id/btnRed"
@@ -46,7 +50,9 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:text="@string/button_red"
-                    android:backgroundTint="#D00000"/>
+                    android:background="@color/leftButtons"
+                    android:paddingBottom="5dp"
+                    android:layout_marginBottom="5dp"/>
 
                 <Button
                     android:id="@+id/btnDiamonds"
@@ -54,7 +60,11 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:text="@string/button_diamonds"
-                    android:backgroundTint="#D00000"/>
+                    android:background="@color/leftButtons"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
 
                 <Button
                     android:id="@+id/btnHearts"
@@ -62,7 +72,11 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:text="@string/button_hearts"
-                    android:backgroundTint="#D00000"/>
+                    android:background="@color/leftButtons"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
 
                 <Button
                     android:id="@+id/btnLower"
@@ -70,7 +84,11 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:text="@string/button_lower"
-                    android:backgroundTint="#D00000"/>
+                    android:background="@color/leftButtons"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
 
                 <Button
                     android:id="@+id/btnIn"
@@ -78,7 +96,11 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:text="@string/button_in"
-                    android:backgroundTint="#D00000"/>
+                    android:background="@color/leftButtons"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"/>
             </LinearLayout>
 
         <LinearLayout
@@ -87,7 +109,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:weightSum="5">
+            android:weightSum="5"
+            android:paddingLeft="5dp">
 
             <Button
                 android:id="@+id/btnBlack"
@@ -95,8 +118,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="@string/button_black"
-                android:backgroundTint="#202020"
-                android:allowUndo="false"/>
+                android:background="@color/rightButtons"
+                android:layout_marginBottom="5dp"/>
 
             <Button
                 android:id="@+id/btnClubs"
@@ -104,7 +127,9 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="@string/button_clubs"
-                android:backgroundTint="#202020"/>
+                android:background="@color/rightButtons"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
 
             <Button
                 android:id="@+id/btnSpades"
@@ -113,7 +138,9 @@
                 android:layout_weight="1"
                 android:text="@string/button_spades"
                 android:allowUndo="false"
-                android:backgroundTint="#202020"/>
+                android:background="@color/rightButtons"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
 
             <Button
                 android:id="@+id/btnHigher"
@@ -121,7 +148,9 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="@string/button_higher"
-                android:backgroundTint="#202020"/>
+                android:background="@color/rightButtons"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
 
             <Button
                 android:id="@+id/btnOut"
@@ -129,7 +158,9 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:text="@string/button_out"
-                android:backgroundTint="#202020"/>
+                android:background="@color/rightButtons"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

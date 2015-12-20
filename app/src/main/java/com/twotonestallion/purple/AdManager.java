@@ -19,12 +19,12 @@ public class AdManager
     public void createAd() {
         // Create an ad.
         interstitialAd = new InterstitialAd(context);
-        interstitialAd.setAdUnitId("ca-app-pub-8709821789139337/4439690200");
+        interstitialAd.setAdUnitId(context.getString(R.string.interstitial_ad_unit_id));
 
-        AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                .addTestDevice("AC98C820A50B4AD8A2106EDE96FB87D4").build();
-
+//        AdRequest adRequest = new AdRequest.Builder()
+//                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+//                .addTestDevice("AC98C820A50B4AD8A2106EDE96FB87D4").build();
+        AdRequest adRequest = new AdRequest.Builder().build();
         // Load the interstitial ad.
         interstitialAd.loadAd(adRequest);
     }

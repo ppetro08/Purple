@@ -3,6 +3,8 @@ package com.twotonestallion.purple;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -48,11 +51,12 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
         context = getApplicationContext();
 
         AdView mAdView = (AdView) findViewById(R.id.adView);
-        AdRequest request = new AdRequest.Builder()
-                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)        // All emulators
-                .addTestDevice("AC98C820A50B4AD8A2106EDE96FB87D4")  // An example device ID
-                .build();
-        mAdView.loadAd(request);
+//        AdRequest adRequest = new AdRequest.Builder()
+//                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)        // All emulators
+//                .addTestDevice("AC98C820A50B4AD8A2106EDE96FB87D4")  // An example device ID
+//                .build();
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         // Check that the activity is using the layout version with
         // the fragment_container FrameLayout
@@ -117,6 +121,23 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
             }
             ((TextView) findViewById(R.id.lblDrinkCount)).setText(drinks);
 
+            Drawable[] layers;
+            LayerDrawable layerDrawable;
+            if (guess.equalsIgnoreCase("PURPLE")) {
+                layers = new Drawable[2];
+                layers[1] = getDrawableCard(purple.getCurrentCard().getCardName());
+                layers[0] = getDrawableCard(purple.getPreviousCard().getCardName());
+                layerDrawable = new LayerDrawable(layers);
+                layerDrawable.setLayerInset(1, 250, 250, 0, 0);
+                layerDrawable.setLayerInset(0, 0, 0, 250, 250);
+            }
+            else {
+                layers = new Drawable[1];
+                layers[0] = getDrawableCard(purple.getCurrentCard().getCardName());
+                layerDrawable = new LayerDrawable(layers);
+            }
+            ((ImageView) findViewById(R.id.imgWrongCard)).setImageDrawable(layerDrawable);
+
             wrongCardOverlay.setVisibility(View.VISIBLE);
             wrongCardOverlay.setOnClickListener(new View.OnClickListener()
             {
@@ -129,6 +150,13 @@ public class MainActivity extends AppCompatActivity implements FragmentOptions.O
 
             purple.discardCards();
         }
+    }
+
+    public Drawable getDrawableCard(String cardName)
+    {
+        String uri = "@drawable/" + cardName;
+        int imageResourceID = getResources().getIdentifier(uri, null, getPackageName());
+        return getResources().getDrawable(imageResourceID);
     }
 
     // Handles the changing the cards on the Game Fragment

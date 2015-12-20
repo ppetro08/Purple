@@ -1,10 +1,5 @@
 package com.twotonestallion.purple;
 
-import android.app.Activity;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -62,7 +57,7 @@ public class Purple
     {
         for (Rank rank : Rank.values()) {
             for (Suit suit : Suit.values()) {
-                cards.add(new PlayingCards(suit,Rank.TWO));
+                cards.add(new PlayingCards(suit, rank));
             }
         }
         return cards;

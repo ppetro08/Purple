@@ -18,7 +18,7 @@ public class Rules extends AppCompatActivity
                     "start a round the dealer clicks the card and asks the player to their left to guess " +
                     "based on the options given. If a player guesses correctly they may pass to the next " +
                     "player on their left or continue to guess. When a card is incorrectly guessed that player " +
-                    "must take a drink for each card on the table and the new dealer is the player to the left of the dealer</p>" +
+                    "must take a drink for each card on the drawn and the new dealer is the player to the left of the dealer</p>" +
                     "<p style=\"margin-bottom:0; padding-bottom:0;\">Additional Rules:</p>" +
                     "<ul style=\"margin-top:0; padding-top:0;\">" +
                         "<li>Aces are high</li>" +
