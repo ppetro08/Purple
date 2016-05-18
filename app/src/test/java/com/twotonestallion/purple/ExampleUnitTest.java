@@ -1,4 +1,4 @@
-package com.twotonestallion.purple;
+package com.purple_paid.purple;
 
 import org.junit.Test;
 

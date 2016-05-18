@@ -3,16 +3,16 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
         config {
-            keyAlias 'PurpleKey'
-            keyPassword 'Spencer_08'
-            storeFile file('D:/Users/Philip/android.jks')
-            storePassword 'Spencer_08'
+            keyAlias 'Purple'
+            keyPassword 'Staal_08'
+            storeFile file('C:/Users/Philip Petrosino/android.jks')
+            storePassword 'Staal_08'
         }
     }
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
     defaultConfig {
-        applicationId "com.twotonestallion.purple"
+        applicationId "com.purple_paid.purple"
         minSdkVersion 19
         targetSdkVersion 23
         versionCode 1
