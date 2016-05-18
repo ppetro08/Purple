@@ -5,7 +5,7 @@
               android:clickable="true"
               android:orientation="vertical"
               android:weightSum="6"
-              tools:context="com.twotonestallion.purple_paid.options"
+              tools:context="com.purple_paid.purple.options"
               android:padding="16dp">
 
     <LinearLayout
