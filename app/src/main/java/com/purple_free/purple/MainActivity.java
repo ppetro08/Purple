@@ -1,5 +1,6 @@
-package com.purple_paid.purple;
+package com.purple_free.purple;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -16,15 +17,45 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+
 public class MainActivity extends AppCompatActivity implements FragmentOptions.OnOptionClickListener, FragmentGame.GameClickListener
 {
     public Purple purple;
+    private static Context context;
+
+    public void createInterstitialAd()
+    {
+        // Creates full screen ad
+        AdManager adManager = new AdManager(context);
+        final InterstitialAd ad = adManager.getAd();
+        ad.setAdListener(new AdListener()
+        {
+            @Override
+            public void onAdLoaded()
+            {
+                ad.show();
+            }
+        });
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context = getApplicationContext();
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+//        AdRequest adRequest = new AdRequest.Builder()
+//                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)        // All emulators
+//                .addTestDevice("AC98C820A50B4AD8A2106EDE96FB87D4")  // An example device ID
+//                .build();
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         // Check that the activity is using the layout version with
         // the fragment_container FrameLayout

@@ -1,4 +1,4 @@
-package com.purple_paid.purple;
+package com.purple_free.purple;
 
 import android.app.Activity;
 import android.graphics.drawable.Drawable;

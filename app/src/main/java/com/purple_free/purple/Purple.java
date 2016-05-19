@@ -1,4 +1,4 @@
-package com.purple_paid.purple;
+package com.purple_free.purple;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -39,6 +39,9 @@ public class Purple
         drinkCount++;
         cardCount++;
         if (cardCount > cards.size()) {
+            MainActivity mainActivity = new MainActivity();
+            mainActivity.createInterstitialAd(); // Creates full screen ad
+            cardCount++;
             initializeDeck();
         }
     }

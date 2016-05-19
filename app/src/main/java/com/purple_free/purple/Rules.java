@@ -1,4 +1,4 @@
-package com.purple_paid.purple;
+package com.purple_free.purple;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
